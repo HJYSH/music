@@ -1,17 +1,39 @@
 <template>
-  <div class="header">
-    <div class="logo">
+  <div class="body">
+    <div class="header">
+      <div class="logo">
+      </div>
+      <ul class="banner">
+        <li>发现音乐<span class="cor"/></li>
+        <li>我的音乐</li>
+        <li>朋友</li>
+        <li>商城</li>
+        <li>音乐人</li>
+        <li>下载客户端</li>
+      </ul>
+      <div class="hot"></div>
+      <div class="search">
+        <el-input
+          v-model="keyword"
+          size="medium"
+          placeholder="用户/视频/电台/音乐"
+          prefix-icon="el-icon-search"
+          @focus="find"
+          @blur="hidden"
+        >
+          >
+        </el-input>
+        <div class="result" v-show="show1">
+          <router-link to="/about" class="result-header">搜"{{keyword}}"相关的用户</router-link>
+          <div class="song">
+            <div class="title">歌曲</div>
+            <div class="message">ni hao </div>
+          </div>
+        </div>
+      </div>
+      <div class="user"><p>创作者中心</p></div>
+      <router-link tag="div" to="/about" class="log">登录</router-link>
     </div>
-    <ul class="banner">
-      <li>发现音乐</li>
-      <li>我的音乐</li>
-      <li>朋友</li>
-      <li>商城</li>
-      <li>音乐人</li>
-      <li>下载客户端</li>
-    </ul>
-    <div class="search">3</div>
-    <div class="user">4</div>
   </div>
 </template>
 
@@ -20,30 +42,113 @@ export default {
   name: 'HomeHeader',
   data () {
     return {
+      keyword: '',
+      display: 'false',
+      setTimeout: ''
+    }
+  },
+  methods: {
+    find () {
+      this.display = true
+    },
+    // 这里设置了一个setTimeout，是为了解决点击搜索提供的选项的链接没有跳转直接隐藏搜索提升的bug
+    hidden () {
+      setTimeout(this.change, 150)
+    },
+    change () {
+      this.display = false
+    }
+  },
+  computed: {
+    show1 () {
+      return this.keyword && this.display
     }
   }
 }
 </script>
 <style lang="stylus" scoped>
+.body
+  background:#242424
   .header
     width:1100px
     height:69px
+    line-height 69px
     display:flex
     margin : 0 auto
-    background:#242424
+    color:white
     .logo
       width:176px
       background : url("~@/assets/topbar.png")
     .banner
       display:flex
-      width:600px
+      width:550px
       height:69px
-      color:white
       margin:0
       padding:0
       list-style none
       li
+        position relative
         height:69px
-        line-height 69px
         padding:0 19px
+        &:hover
+          background:black
+        .cor
+          position absolute
+          display block
+          left:42%
+          top: 62px
+          width:12px
+          height:7px
+          background:url("~@/assets/topbar.png")
+          background-repeat no-repeat
+          background-position  -226px 0
+    .hot
+      position:relative
+      left:-20px
+      top:20px
+      height:50px
+      width:40px
+      background : url("~@/assets/topbar.png")
+      background-repeat no-repeat
+      background-position  -180px 0
+    .search
+      width:158px
+      font-size 12px
+      border-radius :50%
+      .result
+        position absolute
+        top:60px
+        width:200px
+        line-height: 26px
+        border-radius 4px
+        background:red
+        color:black
+        .result-header
+          border-bottom 1px solid
+          &:hover
+            background:black
+        .song
+          display flex
+          .title
+            width:60px
+          .message
+            width:140px
+            border:1px solid
+            border-top:0
+            border-bottom :0
+            border-right:0
+    .user
+      padding:0 15px
+      font-size small
+      p
+        position:relative
+        top:19px
+        height:30px
+        padding:0 14px
+        line-height 30px
+        border:1px solid white
+        border-radius 15px
+        margin:0
+    .log
+      font-size small
 </style>
