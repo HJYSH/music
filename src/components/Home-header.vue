@@ -24,7 +24,7 @@
           >
         </el-input>
         <div class="result" v-show="show1">
-          <router-link to="/about" class="result-header">搜"{{keyword}}"相关的用户</router-link>
+          <router-link target="_blank" to="/about" class="result-header">搜"{{keyword}}"相关的用户</router-link>
           <div class="song">
             <div class="title">歌曲</div>
             <div class="message">ni hao </div>
@@ -104,7 +104,7 @@ export default {
           background-position  -226px 0
     .hot
       position:relative
-      left:-20px
+      left:-60px
       top:20px
       height:50px
       width:40px
