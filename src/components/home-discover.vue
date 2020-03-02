@@ -2,6 +2,7 @@
   <div class="discover">
     <div class="content">
       <ItemHeader/>
+      <HotContent/>
     </div>
     <div class="right-side">
       123
@@ -11,9 +12,10 @@
 
 <script>
 import ItemHeader from './discoverComponents/item-header'
+import HotContent from './discoverComponents/hot-content'
 export default {
   name: 'HomeDiscover',
-  components: { ItemHeader },
+  components: { HotContent, ItemHeader },
   data () {
     return {
     }
