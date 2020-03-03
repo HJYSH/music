@@ -4,12 +4,14 @@
       <div class="logo">
       </div>
       <ul class="banner">
-        <li>发现音乐<span class="cor"/></li>
-        <li>我的音乐</li>
-        <li>朋友</li>
-        <li>商城</li>
-        <li>音乐人</li>
-        <li>下载客户端</li>
+        <router-link
+          tag="li"
+          v-for="(item, index) of nav"
+          :key="item.key"
+          :to="'/' + item.to"
+          :class="{selected : index===key}"
+          @click="handleNavSelect(index)"
+        >{{item.title}}<span class="cor" v-show="index===key"/></router-link>
       </ul>
       <div class="hot"></div>
       <div class="search">
@@ -44,7 +46,40 @@ export default {
     return {
       keyword: '',
       display: 'false',
-      setTimeout: ''
+      setTimeout: '',
+      key: 0,
+      nav: [
+        {
+          key: 1,
+          title: '发现音乐',
+          to: ''
+        },
+        {
+          key: 2,
+          title: '我的音乐',
+          to: '我的音乐'
+        },
+        {
+          key: 3,
+          title: '朋友',
+          to: '朋友'
+        },
+        {
+          key: 4,
+          title: '商城',
+          to: '商城'
+        },
+        {
+          key: 5,
+          title: '音乐人',
+          to: '音乐人'
+        },
+        {
+          key: 6,
+          title: '下载客户端',
+          to: '下载客户端'
+        }
+      ]
     }
   },
   methods: {
@@ -57,6 +92,13 @@ export default {
     },
     change () {
       this.display = false
+    },
+    handleNavSelect (index) {
+      if (index < this.nav.length - 3 || index > this.nav.length - 2) {
+        if (index !== this.key) {
+          this.key = index
+        }
+      }
     }
   },
   computed: {
@@ -102,6 +144,8 @@ export default {
           background:url("~@/assets/topbar.png")
           background-repeat no-repeat
           background-position  -226px 0
+      .selected
+        background:black
     .hot
       position:relative
       left:-60px
