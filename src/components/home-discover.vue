@@ -5,6 +5,8 @@
       <HotContent/>
       <ItemHeader/>
       <NewDish/>
+      <ItemHeader/>
+      <Ranking/>
     </div>
     <div class="right-side">
       123
@@ -16,9 +18,10 @@
 import ItemHeader from './discoverComponents/item-header'
 import HotContent from './discoverComponents/hot-content'
 import NewDish from './discoverComponents/new-dish'
+import Ranking from './discoverComponents/ranking'
 export default {
   name: 'HomeDiscover',
-  components: { NewDish, HotContent, ItemHeader },
+  components: { Ranking, NewDish, HotContent, ItemHeader },
   data () {
     return {
     }
