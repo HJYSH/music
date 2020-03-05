@@ -9,7 +9,7 @@
       <Ranking/>
     </div>
     <div class="right-side">
-      123
+      <RightSide/>
     </div>
   </div>
 </template>
@@ -19,9 +19,10 @@ import ItemHeader from './discoverComponents/item-header'
 import HotContent from './discoverComponents/hot-content'
 import NewDish from './discoverComponents/new-dish'
 import Ranking from './discoverComponents/ranking'
+import RightSide from './discoverComponents/right-side'
 export default {
   name: 'HomeDiscover',
-  components: { Ranking, NewDish, HotContent, ItemHeader },
+  components: { RightSide, Ranking, NewDish, HotContent, ItemHeader },
   data () {
     return {
     }
