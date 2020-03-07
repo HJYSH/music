@@ -34,7 +34,9 @@ export default {
     width:980px
     margin: 0 auto
     border:1px solid #d3d3d3
+    border-bottom: none
     display flex
+    background: white
     .content
       width:692px
       padding: 20px 20px 40px 20px
