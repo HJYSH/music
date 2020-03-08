@@ -21,6 +21,7 @@
             :key="item.id"
             v-for="(item, index) of swiper"
             @click="handleKeyChange(index)"
+            :class="{select: key===index}"
           >
             {{item.id}}
           </li>
@@ -81,7 +82,7 @@ export default {
   },
   methods: {
     autoPlay () {
-      // 2秒后淡出
+      // 3秒后淡出
       this.setTimeout2 = setTimeout(() => {
         this.transition = 'opacity ease-out 1s'
         this.opacity = 0
@@ -94,7 +95,7 @@ export default {
         // 切换图片时，图片淡入
         this.transition = 'opacity ease-in 0.6s'
         this.opacity = 1
-        // 2秒后淡出
+        // 3秒后淡出
         this.setTimeout = setTimeout(() => {
           this.transition = 'opacity ease-out 1s'
           this.opacity = 0
@@ -170,8 +171,12 @@ export default {
             margin:8px
             z-index 999
             text-indent -99999px
-            background: green
+            background: white
             border-radius 50%
+            &:hover
+              background: red
+          .select
+            background: red
       .loading
         width:252px
         height:285px

@@ -1,8 +1,8 @@
 <template>
   <div class="body">
     <div class="header">
-      <div class="logo">
-      </div>
+      <router-link to="/" class="logo">
+      </router-link>
       <ul class="banner">
         <router-link
           tag="li"
@@ -11,7 +11,7 @@
           :to="'/' + item.to"
           :class="{selected : index===key}"
           @click="handleNavSelect(index)"
-        >{{item.title}}<span class="cor" v-show="index===key"/></router-link>
+        >{{item.title}}<span class="cor" v-show="item.title===keyWord"/></router-link>
       </ul>
       <div class="hot"></div>
       <div class="search">
@@ -104,6 +104,9 @@ export default {
   computed: {
     show1 () {
       return this.keyword && this.display
+    },
+    keyWord () {
+      return (this.$route.params.about || '发现音乐')
     }
   }
 }
@@ -136,14 +139,14 @@ export default {
           background:black
         .cor
           position absolute
+          box-sizing border-box
           display block
           left:42%
-          top: 62px
+          bottom 0
           width:12px
-          height:7px
-          background:url("~@/assets/topbar.png")
-          background-repeat no-repeat
-          background-position  -226px 0
+          height:12px
+          border 6px solid
+          border-color transparent transparent #C20C0C transparent
       .selected
         background:black
     .hot

@@ -3,7 +3,7 @@
     <h1>{{title}}</h1>
     <div class="tab">
       <div class="tab-item" v-for="(item, index) of tab" :key="item.id">
-        <a >{{item.name}}</a>
+        <router-link :to="'/' + item.name" >{{item.name}}</router-link>
         <span v-if="index!==length">|</span>
       </div>
     </div>

@@ -12,13 +12,13 @@
         </div>
         <div class="content">
           <ul>
-            <li>
+            <router-link tag="li" to="/song/id">
               <img alt="张惠妹" src="http://p1.music.126.net/p9U80ex1B1ciPFa125xV5A==/5931865232210340.jpg?param=62y62" />
               <div class="info">
                 <h4>张惠妹aMEI</h4>
                 <p>台湾歌手张惠妹有一二个三国杀东方国际司法解释</p>
               </div>
-            </li>
+            </router-link>
             <li>
               <img alt="张惠妹" src="http://p1.music.126.net/p9U80ex1B1ciPFa125xV5A==/5931865232210340.jpg?param=62y62" />
               <div class="info">
@@ -53,7 +53,7 @@
             <li>
               <img alt="张惠妹" src="http://p1.music.126.net/p9U80ex1B1ciPFa125xV5A==/5931865232210340.jpg?param=62y62" />
               <div class="anchor-ifo">
-                <h4>张惠妹aMEI <span style="color:red;font-size: 16px">V</span></h4>
+                <h4>张惠妹aMEI <span style="color:red;font-size: 14px">V</span></h4>
                 <p>台ksg;skg;kd;sgfkp;dkf;g;4154548748789</p>
               </div>
             </li>
@@ -111,6 +111,7 @@ export default {
           height:62px
           position relative
           padding-top: 20px
+          cursor pointer
           img
             height:62px
           .info
@@ -120,7 +121,9 @@ export default {
             width:139px
             height:62px
             padding-left:10px
-            background #f5f5f5
+            background: #f5f5f5
+            &:hover
+              background #eee
             h4
               line-height 31px
             p
@@ -160,6 +163,8 @@ export default {
             h4
               font-size 12px
               line-height 20px
+              &:hover
+                text-decoration underline
             p
               font-size 12px
               line-height 20px

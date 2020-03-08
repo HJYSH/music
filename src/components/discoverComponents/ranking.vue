@@ -243,6 +243,8 @@ export default {
           h2
             font-weight bold
             font-size 14px
+            &:hover
+              text-decoration underline
           .btn
             margin-top:10px
             .size

@@ -1,17 +1,15 @@
 <template>
   <div class="hot">
     <ul>
-      <li v-for="item of items" :key="item.id">
-        <router-link to="/about">
-          <img alt="item.title" :src="item.img">
-          <p>{{item.title}}</p>
-        </router-link>
+      <router-link tag="li" to="/about" v-for="item of items" :key="item.id">
+        <img alt="item.title" :src="item.img">
+        <p>{{item.title}}</p>
         <div class="desc-play">
           <span class="icon"></span>
           <span class="desc">{{item.desc}}</span>
           <span class="play"></span>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -68,7 +66,11 @@ export default {
         padding-bottom 30px
         p
           color: #333333
+          font-size 14px
           line-height 16px
+          margin-top 8px
+          &:hover
+            text-decoration underline
         .desc-play
           position absolute
           top:113px

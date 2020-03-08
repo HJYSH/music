@@ -38,9 +38,9 @@ export default {
     display flex
     background: white
     .content
-      width:692px
+      width:689px
       padding: 20px 20px 40px 20px
       border-right: 1px solid #d3d3d3
     .right-side
-      width:251px
+      width:249px
 </style>

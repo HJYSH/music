@@ -6,6 +6,7 @@
           <li v-for="dish of item.content" :key="dish.id">
             <div class="img">
               <img :alt="dish.singer" :src="dish.img">
+              <span class="play"></span>
             </div>
             <p class="singer">{{dish.singer}}</p>
             <p class="msg">{{dish.msg}}</p>
@@ -197,16 +198,28 @@ export default {
           background-repeat no-repeat
           background-position -260px 100px
           .img
+            position: relative
             width:118px
             height:100px
             background url("~@/assets/coverall.png")
             background-repeat no-repeat
             margin-bottom 7px
             background-position 0 -570px
+            &:hover .play
+              position absolute
+              width:16px
+              height 17px
+              right:15px
+              bottom 5px
+              background url("~@/assets/iconall.png")
+              background-repeat no-repeat
+              padding-right:10px
             img
               width:100px
               height:100px
           p
             line-height 20px
             ellipsis()
+            &:hover
+              text-decoration underline
 </style>
