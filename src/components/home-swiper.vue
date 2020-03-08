@@ -1,17 +1,17 @@
 <template>
   <div
     class="body"
-    @mouseenter="stopAuto"
-    @mouseleave="autoPlay"
-    :style="{ background: swiperItem.background}"
+    @mouseenter= "stopAuto"
+    @mouseleave= "autoPlay"
+    :style= "{ background: swiperItem.bgColor}"
   >
     <div class="container">
       <div class="swiper">
         <router-link to="/about">
           <img
             alt="1"
-            :src="swiperItem.img"
-            :style="{ transition: transition, opacity: opacity}"
+            :src= swiperItem.imgUrl
+            :style= "{ transition: transition, opacity: opacity}"
           >
         </router-link>
         <ul
@@ -19,7 +19,7 @@
         >
           <li
             :key="item.id"
-            v-for="(item, index) of swiper"
+            v-for="(item, index) of list"
             @click="handleKeyChange(index)"
             :class="{select: key===index}"
           >
@@ -52,25 +52,11 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    list: Array
+  },
   data () {
     return {
-      swiper: [
-        {
-          id: 1,
-          background: 'blue',
-          img: 'http://p1.music.126.net/9uDT_uDF54swMpBHPjx_IQ==/109951164753781892.jpg?imageView&quality=89'
-        },
-        {
-          id: 2,
-          background: 'red',
-          img: 'http://p1.music.126.net/tQVFPFK5JF01ZY0r7MjAxQ==/109951164755957537.jpg?imageView&quality=89'
-        },
-        {
-          id: 3,
-          background: 'pink',
-          img: 'http://p1.music.126.net/Slq3EmG_9XrBwYFBK0mVag==/109951164755707125.jpg?imageView&quality=89'
-        }
-      ],
       key: 0,
       auto: null,
       transition: null,
@@ -89,7 +75,7 @@ export default {
       }, 3000)
       // 计时器，用来控制轮播图切换
       this.timer = setInterval(() => {
-        if (this.key < this.swiper.length - 1) {
+        if (this.key < this.list.length - 1) {
           this.key++
         } else { this.key = 0 }
         // 切换图片时，图片淡入
@@ -118,11 +104,11 @@ export default {
       if (this.key > 0) {
         this.key--
       } else {
-        this.key = this.swiper.length - 1
+        this.key = this.list.length - 1
       }
     },
     next () {
-      if (this.key < this.swiper.length - 1) {
+      if (this.key < this.list.length - 1) {
         this.key++
       } else {
         this.key = 0
@@ -134,7 +120,7 @@ export default {
   },
   computed: {
     swiperItem () {
-      return this.swiper[this.key]
+      return this.list[this.key]
     }
   },
   mounted () {

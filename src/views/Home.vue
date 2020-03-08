@@ -2,7 +2,7 @@
   <div class="home">
     <HomeHeader/>
     <HeaderSelect/>
-    <HomeSwiper/>
+    <HomeSwiper :list="swiperList"/>
     <HomeDiscover/>
     <AllFooter/>
   </div>
@@ -15,6 +15,7 @@ import HomeSwiper from '../components/home-swiper'
 import HomeDiscover from '../components/home-discover'
 import HomeHeader from '../components/Home-header'
 import AllFooter from './components/footer'
+import axios from 'axios'
 
 export default {
   name: 'Home',
@@ -24,6 +25,27 @@ export default {
     HomeDiscover,
     HomeSwiper,
     HeaderSelect
+  },
+  data () {
+    return {
+      swiperList: []
+    }
+  },
+  methods: {
+    getHomeInfo () {
+      axios.get('/api/home.json')
+        .then(this.getHomeInfoSucc)
+    },
+    getHomeInfoSucc (res) {
+      res = res.data
+      if (res.ret && res.data) {
+        const data = res.data
+        this.swiperList = data.swiperList
+      }
+    }
+  },
+  mounted () {
+    this.getHomeInfo()
   }
 }
 </script>
