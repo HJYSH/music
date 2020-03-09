@@ -1,157 +1,43 @@
 <template>
-  <div class="new-dish">
-    <el-carousel :interval="5000" arrow="always" indicator-position="none">
-      <el-carousel-item v-for="item in dis" :key="item.item1">
-        <ul>
-          <li v-for="dish of item.content" :key="dish.id">
-            <div class="img">
-              <img :alt="dish.singer" :src="dish.img">
-              <span class="play"></span>
-            </div>
-            <p class="singer">{{dish.singer}}</p>
-            <p class="msg">{{dish.msg}}</p>
-          </li>
-        </ul>
-      </el-carousel-item>
-    </el-carousel>
+  <div v-if="dish">
+    <div class="header">
+      <h1>{{title}}</h1>
+      <div class="more">
+        <router-link to="/about">更多</router-link>
+        <i>&nbsp;</i>
+      </div>
+    </div>
+    <div class="new-dish">
+      <el-carousel :interval="5000" arrow="always" indicator-position="none">
+        <el-carousel-item v-for="item of list" :key="item.item1">
+          <ul>
+            <li v-for="list of item.content" :key="list.id">
+              <div class="img">
+                <img :alt="list.singer" :src="list.img">
+                <span class="play"></span>
+              </div>
+              <p class="singer">{{list.singer}}</p>
+              <p class="msg">{{list.msg}}</p>
+            </li>
+          </ul>
+        </el-carousel-item>
+      </el-carousel>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'NewDish',
-  data () {
-    return {
-      dis: [
-        {
-          item1: 1,
-          content: [
-            {
-              id: 3,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 4,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 5,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 6,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 11,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            }
-          ]
-        },
-        {
-          item1: 2,
-          content: [
-            {
-              id: 7,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 8,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 9,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 10,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            }
-          ]
-        },
-        {
-          item1: 3,
-          content: [
-            {
-              id: 3,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 4,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 5,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 6,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 11,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            }
-          ]
-        },
-        {
-          item1: 4,
-          content: [
-            {
-              id: 7,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 8,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 9,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            },
-            {
-              id: 10,
-              img: 'http://p3.music.126.net/PunfNNRGPT-tFm-fWPXTrA==/109951164715215423.jpg?param=100y100',
-              singer: 'MAP OF THE SOUL : 7',
-              msg: '防弹少年团'
-            }
-          ]
-        }
-      ]
+  props: {
+    dish: Object
+  },
+  computed: {
+    title () {
+      return this.dish.title
+    },
+    list () {
+      return this.dish.item
     }
   }
 }
@@ -181,6 +67,33 @@ export default {
     background-position -260px -75px
     z-index -9999px
     left:-17px
+  .header
+    position relative
+    height:35px
+    line-height:33px
+    padding:0 10px 0 34px
+    border-bottom : 2px solid #C10D0C
+    background : url("~@/assets/index.png")
+    background-repeat no-repeat
+    background-position -225px -156px
+    h1
+      float:left
+      font-weight normal
+      font-size 20px
+    .more
+      float right
+      font-size 12px
+      i
+        float:right
+        display block
+        margin-top:10px
+        width:12px
+        height:12px
+        line-height 33px
+        margin-left:4px
+        background: url("~@/assets/index.png")
+        background-repeat no-repeat
+        background-position 0 -240px
   .new-dish
     height:188px
     margin-top:20px

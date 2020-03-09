@@ -1,5 +1,5 @@
 <template>
-  <div class="right-side">
+  <div v-if="side" class="right-side">
     <div class="header">
       <p>登录网易云音乐，可以享受无限收藏的乐趣，并且无限同步到手机</p>
       <router-link to="/about">用户登录</router-link>
@@ -7,56 +7,35 @@
     <div class="singer-anchor">
       <div class="singer">
         <div class="singer-header">
-          <h3>入驻歌手</h3>
+          <h3>{{singerTitle}}</h3>
           <div class="more">查看全部&gt;</div>
         </div>
         <div class="content">
           <ul>
-            <router-link tag="li" to="/song/id">
-              <img alt="张惠妹" src="http://p1.music.126.net/p9U80ex1B1ciPFa125xV5A==/5931865232210340.jpg?param=62y62" />
+            <router-link v-for="item of singerList" :key="item.id" tag="li" :to="'/song/'+item.id">
+              <img alt="张惠妹" :src="item.img" />
               <div class="info">
-                <h4>张惠妹aMEI</h4>
-                <p>台湾歌手张惠妹有一二个三国杀东方国际司法解释</p>
+                <h4>{{item.name}}</h4>
+                <p>{{item.info}}</p>
               </div>
             </router-link>
-            <li>
-              <img alt="张惠妹" src="http://p1.music.126.net/p9U80ex1B1ciPFa125xV5A==/5931865232210340.jpg?param=62y62" />
-              <div class="info">
-                <h4>张惠妹aMEI</h4>
-                <p>台湾歌手张惠妹</p>
-              </div>
-            </li>
-            <li>
-              <img alt="张惠妹" src="http://p1.music.126.net/p9U80ex1B1ciPFa125xV5A==/5931865232210340.jpg?param=62y62" />
-              <div class="info">
-                <h4>张惠妹aMEI</h4>
-                <p>台湾歌手张惠妹</p>
-              </div>
-            </li>
-            <li>
-              <img alt="张惠妹" src="http://p1.music.126.net/p9U80ex1B1ciPFa125xV5A==/5931865232210340.jpg?param=62y62" />
-              <div class="info">
-                <h4>张惠妹aMEI</h4>
-                <p>台湾歌手张惠妹</p>
-              </div>
-            </li>
           </ul>
         </div>
         <div class="footer">申请成为网易音乐人</div>
       </div>
       <div class="anchor">
         <div class="anchor-header">
-          <h3>热门主播</h3>
+          <h3>{{anchorTitle}}</h3>
         </div>
         <div class="anchor-content">
           <ul>
-            <li>
-              <img alt="张惠妹" src="http://p1.music.126.net/p9U80ex1B1ciPFa125xV5A==/5931865232210340.jpg?param=62y62" />
+            <router-link tag="li" v-for="item of anchorList" :key="item.id" :to="'/song/' + item.id">
+              <img :alt="item.name" :src="item.img" />
               <div class="anchor-ifo">
-                <h4>张惠妹aMEI <span style="color:red;font-size: 14px">V</span></h4>
-                <p>台ksg;skg;kd;sgfkp;dkf;g;4154548748789</p>
+                <h4>{{item.name}}<span style="color:red;font-size: 14px">V</span></h4>
+                <p>{{item.info}}</p>
               </div>
-            </li>
+            </router-link>
           </ul>
         </div>
       </div>
@@ -67,8 +46,25 @@
 <script>
 export default {
   name: 'RightSide',
+  props: {
+    side: Object
+  },
   data () {
     return {
+    }
+  },
+  computed: {
+    singerList () {
+      return this.side.singer.list
+    },
+    singerTitle () {
+      return this.side.singer.title
+    },
+    anchorList () {
+      return this.side.anchor.list
+    },
+    anchorTitle () {
+      return this.side.anchor.title
     }
   }
 }

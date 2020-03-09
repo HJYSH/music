@@ -1,55 +1,96 @@
 <template>
-  <div class="hot">
-    <ul>
-      <router-link tag="li" to="/about" v-for="item of items" :key="item.id">
-        <img alt="item.title" :src="item.img">
-        <p>{{item.title}}</p>
-        <div class="desc-play">
-          <span class="icon"></span>
-          <span class="desc">{{item.desc}}</span>
-          <span class="play"></span>
+  <div v-if="list">
+    <div class="header">
+      <h1>{{title}}</h1>
+      <div class="tab">
+        <div class="tab-item" v-for="(item, index) of header" :key="item.id">
+          <router-link :to="'/' + item.name" >{{item.name}}</router-link>
+          <span v-if="index!==length">|</span>
         </div>
-      </router-link>
-    </ul>
+      </div>
+      <div class="more">
+        <router-link to="/about">更多</router-link>
+        <i>&nbsp;</i>
+      </div>
+    </div>
+    <div class="hot">
+      <ul>
+        <router-link tag="li" to="/about" v-for="item of content" :key="item.id">
+          <img alt="item.title" :src="item.img">
+          <p>{{item.title}}</p>
+          <div class="desc-play">
+            <span class="icon"></span>
+            <span class="desc">{{item.desc}}</span>
+            <span class="play"></span>
+          </div>
+        </router-link>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HotContent',
+  props: {
+    list: Object
+  },
   data () {
     return {
-      items: [
-        {
-          id: 1,
-          desc: '21万',
-          img: 'http://p1.music.126.net/8NK78G-Ub1Hy5YcFESwNvA==/109951164758621783.jpg?param=140y140',
-          title: '2020年二月最热新歌TOP50'
-        },
-        {
-          id: 2,
-          desc: '21万',
-          img: 'http://p1.music.126.net/8NK78G-Ub1Hy5YcFESwNvA==/109951164758621783.jpg?param=140y140',
-          title: '2020年二月最热新歌TOP50'
-        },
-        {
-          id: 3,
-          desc: '21万',
-          img: 'http://p1.music.126.net/8NK78G-Ub1Hy5YcFESwNvA==/109951164758621783.jpg?param=140y140',
-          title: '2020年二月最热新歌TOP50'
-        },
-        {
-          id: 4,
-          desc: '21万',
-          img: 'http://p1.music.126.net/8NK78G-Ub1Hy5YcFESwNvA==/109951164758621783.jpg?param=140y140',
-          title: '2020年二月最热新歌TOP50'
-        }
-      ]
+    }
+  },
+  computed: {
+    title () {
+      return this.list.title
+    },
+    header () {
+      return this.list.headerList
+    },
+    content () {
+      return this.list.contentList
+    },
+    length () {
+      return this.header.length
     }
   }
 }
 </script>
 <style lang="stylus" scoped>
+  .header
+    position relative
+    height:35px
+    line-height:33px
+    padding:0 10px 0 34px
+    border-bottom : 2px solid #C10D0C
+    background : url("~@/assets/index.png")
+    background-repeat no-repeat
+    background-position -225px -156px
+    h1
+      float:left
+      font-weight normal
+      font-size 20px
+    .tab
+      float left
+      display flex
+      padding-left:20px
+      font-size 12px
+      .tab-item
+        span
+          padding: 0 5px
+    .more
+      float right
+      font-size 12px
+      i
+        float:right
+        display block
+        margin-top:10px
+        width:12px
+        height:12px
+        line-height 33px
+        margin-left:4px
+        background: url("~@/assets/index.png")
+        background-repeat no-repeat
+        background-position 0 -240px
   .hot
     ul
       flex-wrap wrap

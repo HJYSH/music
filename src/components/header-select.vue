@@ -16,20 +16,15 @@
 <script>
 export default {
   name: 'HeaderSelect',
+  props: {
+    menu: Array
+  },
   data () {
     return {
       keyword: '',
       display: 'false',
       setTimeout: '',
-      id: '1',
-      menu: [
-        { name: '推荐', id: '1' },
-        { name: '排行榜', id: '2' },
-        { name: '歌单', id: '3' },
-        { name: '主播电台', id: '4' },
-        { name: '歌手', id: '5' },
-        { name: '新碟上架', id: '6' }
-      ]
+      id: '1'
     }
   },
   methods: {

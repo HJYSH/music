@@ -3,7 +3,7 @@
     <HomeHeader/>
     <HeaderSelect/>
     <HomeSwiper :list="swiperList"/>
-    <HomeDiscover/>
+    <HomeDiscover :discover="discover"/>
     <AllFooter/>
   </div>
 </template>
@@ -28,7 +28,11 @@ export default {
   },
   data () {
     return {
-      swiperList: []
+      swiperList: [],
+      discover: {},
+      ranking: {},
+      dish: {},
+      hot: {}
     }
   },
   methods: {
@@ -41,6 +45,10 @@ export default {
       if (res.ret && res.data) {
         const data = res.data
         this.swiperList = data.swiperList
+        this.ranking = data.discover.ranking
+        this.dish = data.discover.dish
+        this.hot = data.discover.hot
+        this.discover = data.discover
       }
     }
   },

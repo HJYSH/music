@@ -1,30 +1,39 @@
 <template>
   <div class="discover">
     <div class="content">
-      <ItemHeader/>
-      <HotContent/>
-      <ItemHeader/>
-      <NewDish/>
-      <ItemHeader/>
-      <Ranking/>
+      <HotContent :list="hot"/>
+      <NewDish :dish="dish"/>
+      <Ranking :ranking="ranking"/>
     </div>
     <div class="right-side">
-      <RightSide/>
+      <RightSide :side="side"/>
     </div>
   </div>
 </template>
 
 <script>
-import ItemHeader from './discoverComponents/item-header'
 import HotContent from './discoverComponents/hot-content'
-import NewDish from './discoverComponents/new-dish'
 import Ranking from './discoverComponents/ranking'
 import RightSide from './discoverComponents/right-side'
+import NewDish from './discoverComponents/new-dish'
 export default {
   name: 'HomeDiscover',
-  components: { RightSide, Ranking, NewDish, HotContent, ItemHeader },
-  data () {
-    return {
+  components: { NewDish, RightSide, Ranking, HotContent },
+  props: {
+    discover: Object
+  },
+  computed: {
+    ranking () {
+      return this.discover.ranking
+    },
+    dish () {
+      return this.discover.dish
+    },
+    hot () {
+      return this.discover.hot
+    },
+    side () {
+      return this.discover.side
     }
   }
 }
