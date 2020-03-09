@@ -184,6 +184,7 @@ export default {
   .new-dish
     height:188px
     margin-top:20px
+    margin-bottom 30px
     background:#f5f5f5
     .el-carousel
       height:188px

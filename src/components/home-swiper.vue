@@ -1,16 +1,17 @@
 <template>
   <div
     class="body"
+    v-if="show"
     @mouseenter= "stopAuto"
     @mouseleave= "autoPlay"
-    :style= "{ background: swiperItem.bgColor}"
+    :style= "{background: color}"
   >
     <div class="container">
       <div class="swiper">
         <router-link to="/about">
           <img
             alt="1"
-            :src= swiperItem.imgUrl
+            :src="src"
             :style= "{ transition: transition, opacity: opacity}"
           >
         </router-link>
@@ -18,8 +19,8 @@
           class="pagination"
         >
           <li
-            :key="item.id"
             v-for="(item, index) of list"
+            :key="item.id"
             @click="handleKeyChange(index)"
             :class="{select: key===index}"
           >
@@ -58,12 +59,12 @@ export default {
   data () {
     return {
       key: 0,
-      auto: null,
-      transition: null,
-      opacity: null,
-      timer: null,
-      setTimeout: null,
-      setTimeout2: null
+      auto: '',
+      transition: '',
+      opacity: '',
+      timer: '',
+      setTimeout: '',
+      setTimeout2: ''
     }
   },
   methods: {
@@ -119,8 +120,14 @@ export default {
     }
   },
   computed: {
-    swiperItem () {
-      return this.list[this.key]
+    show () {
+      return this.list.length
+    },
+    color () {
+      return this.list[this.key].color
+    },
+    src () {
+      return this.list[this.key].url
     }
   },
   mounted () {
