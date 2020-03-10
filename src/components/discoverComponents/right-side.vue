@@ -153,7 +153,7 @@ export default {
             left:40px
             top:0
             height 40px
-            width:139px
+            width:160px
             overflow hidden
             padding-left:5px
             h4

@@ -17,7 +17,7 @@
       <ul>
         <router-link tag="li" to="/about" v-for="item of content" :key="item.id">
           <img alt="item.title" :src="item.img">
-          <p>{{item.title}}</p>
+          <p><span v-if="item.radio" class="p-icon"></span>{{item.title}}</p>
           <div class="desc-play">
             <span class="icon"></span>
             <span class="desc">{{item.desc}}</span>
@@ -50,7 +50,7 @@ export default {
       return this.list.contentList
     },
     length () {
-      return this.header.length
+      return this.list.headerList.length - 1
     }
   }
 }
@@ -108,10 +108,21 @@ export default {
         p
           color: #333333
           font-size 14px
-          line-height 16px
+          line-height 1.4
           margin-top 8px
           &:hover
             text-decoration underline
+          .p-icon
+            position relative
+            top:2px
+            display inline-block
+            width:35px
+            height 15px
+            margin-right:5px
+            line-height 1.4
+            background url("~@/assets/icon.png")
+            background-repeat no-repeat
+            background-position -31px -658px
         .desc-play
           position absolute
           top:113px
@@ -133,6 +144,7 @@ export default {
             margin: 8px 5px 8px 10px
           .desc
             float:left
+            font-size 12px
           .play
             float:right
             width:16px

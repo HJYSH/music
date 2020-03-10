@@ -139,6 +139,8 @@ export default {
   .body
     position relative
     height:285px
+    background-size 6000px
+    background-position center
     .container
       width:982px
       height:0

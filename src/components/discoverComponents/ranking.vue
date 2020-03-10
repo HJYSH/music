@@ -23,9 +23,9 @@
         </dt>
         <dd>
           <ul>
-            <li class="rank-item" v-for="msg of item.content" :key="msg.rank">
+            <li class="rank-item" v-for="(msg ,index) of item.content" :key="msg.rank">
               <div class="item">
-                <span class="rank">{{msg.rank}}</span>
+                <span class="rank" :class="{leader : index<3}">{{msg.rank}}</span>
                 <router-link tag="p" :to="'/song/' + msg.id">{{msg.name}}</router-link>
               </div>
               <div class="item-btn">
@@ -159,10 +159,15 @@ export default {
             p
               overflow hidden
               ellipsis()
+              font-size 12px
             .rank
               position absolute
-              left:-20px
+              width:20px
+              text-align center
+              left:-26px
               line-height 32px
+            .leader
+              color:red
           .item-btn
             display none
             width 78px
