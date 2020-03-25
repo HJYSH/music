@@ -5,6 +5,7 @@
     <HomeSwiper :list="swiperList"/>
     <HomeDiscover :discover="discover"/>
     <AllFooter/>
+    <div class="toTop" @click="handleTop" v-show="show">top</div>
   </div>
 </template>
 
@@ -32,7 +33,8 @@ export default {
       discover: {},
       ranking: {},
       dish: {},
-      hot: {}
+      hot: {},
+      show: false
     }
   },
   methods: {
@@ -50,14 +52,39 @@ export default {
         this.hot = data.discover.hot
         this.discover = data.discover
       }
+    },
+    // 回到页面的顶部
+    handleTop () {
+      window.pageYOffset = 0
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+    },
+    // 获取当前页面的滚动高度，根据滚动高度决定show的值
+    handleScroll () {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      this.show = scrollTop > 0 ? 'true' : false
     }
   },
   mounted () {
     this.getHomeInfo()
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  destroyed () {
+    document.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
 <style lang="stylus" scoped>
   .home
     background #f5f5f5
+    .toTop
+      position:fixed
+      bottom: 180px
+      left:50%
+      margin-left 510px
+      border: 1px solid
+      text-align center
+      width:50px
+      height 50px
+      line-height 50px
 </style>
