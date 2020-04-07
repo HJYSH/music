@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <HomeHeader/>
-    <HeaderSelect/>
+    <HeaderSelect :menu="menu"/>
     <HomeSwiper :list="swiperList"/>
     <HomeDiscover :discover="discover"/>
     <AllFooter/>
@@ -34,6 +34,7 @@ export default {
       ranking: {},
       dish: {},
       hot: {},
+      menu: [],
       show: false
     }
   },
@@ -51,6 +52,7 @@ export default {
         this.dish = data.discover.dish
         this.hot = data.discover.hot
         this.discover = data.discover
+        this.menu = data.menu
       }
     },
     // 回到页面的顶部
