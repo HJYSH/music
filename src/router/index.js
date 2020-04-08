@@ -21,6 +21,7 @@ const routes = [
   {
     path: '/song/:id',
     name: 'song',
+    props: true,
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -34,7 +35,7 @@ const router = new VueRouter({
   routes
 })
 router.beforeEach((to, from, next) => {
-  if (to.path === '/') {
+  if (to.path === '/' || to.name === 'song') {
     // 登录页，不需要判断
     next()
   } else { // 不是去登录页
